@@ -13,7 +13,7 @@ This is not a verified physical-platform inference boot.
 - [Driver and inference source](driver/src/)
 - [Kernel sources and extracted kernels](driver/kernels/)
 - [Build inputs and provenance](docs/BUILD.md)
-- [USB image releases](https://github.com/nodnarbrox/uefi-gpu/releases)
+- [USB image release](https://github.com/nodnarbrox/uefi-gpu/releases/tag/v0.1.0-usb-bringup) and [boot instructions](docs/USB-RELEASE.md)
 
 USB artifacts are labeled separately from the later inference checkpoint.
 

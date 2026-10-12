@@ -1,0 +1,16 @@
+{
+  "release": "v0.1.0-usb-bringup",
+  "scope": "Archived GPU bring-up artifact; not the 177B inference EFI",
+  "image": "uefi-gpu-usb-bringup-v0.1.0.img",
+  "image_bytes": 220200960,
+  "image_sha256": "7e8c7396c5cff2a0e4224f69118599602720d44e07609d1b16890414ae36cf35",
+  "original_image_sha256": "d772fa98fbaa44204e037ae02804449b4e20d73ed3c41559d33588120243a31b",
+  "efi_sha256": "d83b2449293e87426c97a12cee1d18c8ec684097bc04615d62b878db81062f69",
+  "efi_bytes": 472064,
+  "gsp_version": "570.144",
+  "efi_unchanged": true,
+  "raw_firmware_partition_unchanged": true,
+  "packaging_changes": "ESP instructions and third-party notices only",
+  "validation": "GPT/FAT and PE inspection; isolated QEMU/OVMF USB smoke boot started uefi-gpu M1.12 and wrote a diagnostic result to a temporary snapshot; no GPU attached; no fresh physical boot",
+  "firmware_license_source": "https://download.nvidia.com/XFree86/Linux-x86_64/570.144/license.txt"
+}
