@@ -1,0 +1,9 @@
+{
+  "checked_on": "2026-10-12",
+  "scope": "Public source export; no fresh GPU inference or physical USB boot",
+  "source_identity": "All 29 Rust source files copied byte for byte from retained checkpoint",
+  "core_tests": {"passed": 3, "failed": 0},
+  "cache_tests": {"passed": 4, "failed": 0},
+  "packaging_checks": ["JSON parsing", "Python syntax", "relative Markdown links", "credential pattern scan"],
+  "full_efi_build": "Requires external firmware and model fixtures listed in external-inputs.json"
+}

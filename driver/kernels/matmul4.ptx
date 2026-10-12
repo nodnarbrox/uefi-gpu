@@ -1,0 +1,37 @@
+.version 8.7
+.target sm_86
+.address_size 64
+
+// One thread per output of a real 4x4 FP32 matrix product, no local/shared use.
+.visible .entry matmul4()
+{
+    .reg .pred %p;
+    .reg .b32 %idx, %row, %col, %k, %ai, %bi, %ci;
+    .reg .b64 %ap, %bp, %cp;
+    .reg .f32 %a, %b, %sum;
+    mov.u32 %idx, %tid.x;
+    setp.ge.u32 %p, %idx, 16;
+    @%p bra done;
+    shr.u32 %row, %idx, 2;
+    and.b32 %col, %idx, 3;
+    mov.u32 %k, 0;
+    mov.f32 %sum, 0f00000000;
+loop:
+    mad.lo.u32 %ai, %row, 4, %k;
+    mad.lo.u32 %bi, %k, 4, %col;
+    mul.wide.u32 %ap, %ai, 4;
+    mul.wide.u32 %bp, %bi, 4;
+    add.u64 %ap, %ap, 0x04003000;
+    add.u64 %bp, %bp, 0x04003100;
+    ld.global.f32 %a, [%ap];
+    ld.global.f32 %b, [%bp];
+    fma.rn.f32 %sum, %a, %b, %sum;
+    add.u32 %k, %k, 1;
+    setp.lt.u32 %p, %k, 4;
+    @%p bra loop;
+    mul.wide.u32 %cp, %idx, 4;
+    add.u64 %cp, %cp, 0x04003200;
+    st.global.f32 [%cp], %sum;
+done:
+    ret;
+}

@@ -1,0 +1,5 @@
+<|im_start|>system
+You are a helpful assistant.<|im_end|>
+<|im_start|>user
+Solve this riddle: I am a number. If you double me and add two, you get twelve. What number am I? Answer in one short sentence.<|im_end|>
+<|im_start|>assistant

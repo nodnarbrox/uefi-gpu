@@ -1,0 +1,18 @@
+.version 8.7
+.target sm_86
+.address_size 64
+// Upload or read back a bounded linear buffer using the existing compute channel.
+.visible .entry copy_u32(.param .u64 source, .param .u64 destination, .param .u32 words)
+{
+    .reg .pred %p;
+    .reg .b32 %tidreg,%cta,%idx,%n,%value;
+    .reg .b64 %src,%dst,%offset,%a,%b;
+    ld.param.u64 %src,[source];ld.param.u64 %dst,[destination];ld.param.u32 %n,[words];
+    mov.u32 %tidreg,%tid.x;mov.u32 %cta,%ctaid.x;
+    mad.lo.u32 %idx,%cta,128,%tidreg;
+    setp.ge.u32 %p,%idx,%n;@%p bra done;
+    mul.wide.u32 %offset,%idx,4;add.u64 %a,%src,%offset;add.u64 %b,%dst,%offset;
+    ld.global.u32 %value,[%a];st.global.u32 [%b],%value;
+done:
+    ret;
+}

@@ -1,0 +1,40 @@
+.version 8.7
+.target sm_86
+.address_size 64
+.visible .entry matvec_q8(
+    .param .u64 weights, .param .u64 input_x, .param .u64 output_y,
+    .param .u32 columns, .param .u32 rows)
+{
+    .reg .pred %p;
+    .reg .b16 %half;
+    .reg .b32 %tidreg,%cta,%warp,%lane,%row,%n,%m,%blocks,%blk,%rowbytes,%off,%k,%qi,%tmp;
+    .reg .b64 %w,%x,%y,%base,%addr,%xa,%ya;
+    .reg .f32 %scale,%q,%a,%sum,%other;
+    ld.param.u64 %w,[weights];ld.param.u64 %x,[input_x];ld.param.u64 %y,[output_y];
+    ld.param.u32 %n,[columns];ld.param.u32 %m,[rows];
+    mov.u32 %tidreg,%tid.x;mov.u32 %cta,%ctaid.x;
+    shr.u32 %warp,%tidreg,5;and.b32 %lane,%tidreg,31;
+    mad.lo.u32 %row,%cta,4,%warp;
+    setp.ge.u32 %p,%row,%m;@%p bra done;
+    shr.u32 %blocks,%n,5;mul.lo.u32 %rowbytes,%blocks,34;
+    mul.wide.u32 %base,%row,%rowbytes;add.u64 %base,%base,%w;
+    mov.u32 %blk,0;mov.f32 %sum,0f00000000;
+loop:
+    mul.wide.u32 %addr,%blk,34;add.u64 %addr,%addr,%base;
+    ld.global.b16 %half,[%addr];cvt.f32.f16 %scale,%half;
+    cvt.u64.u32 %xa,%lane;add.u64 %addr,%addr,%xa;
+    ld.global.s8 %qi,[%addr+2];cvt.rn.f32.s32 %q,%qi;
+    mad.lo.u32 %k,%blk,32,%lane;mul.wide.u32 %xa,%k,4;add.u64 %xa,%xa,%x;
+    ld.global.f32 %a,[%xa];mul.f32 %q,%q,%scale;
+    fma.rn.f32 %sum,%q,%a,%sum;
+    add.u32 %blk,%blk,1;setp.lt.u32 %p,%blk,%blocks;@%p bra loop;
+    shfl.sync.bfly.b32 %other,%sum,16,31,0xffffffff;add.f32 %sum,%sum,%other;
+    shfl.sync.bfly.b32 %other,%sum,8,31,0xffffffff;add.f32 %sum,%sum,%other;
+    shfl.sync.bfly.b32 %other,%sum,4,31,0xffffffff;add.f32 %sum,%sum,%other;
+    shfl.sync.bfly.b32 %other,%sum,2,31,0xffffffff;add.f32 %sum,%sum,%other;
+    shfl.sync.bfly.b32 %other,%sum,1,31,0xffffffff;add.f32 %sum,%sum,%other;
+    setp.ne.u32 %p,%lane,0;@%p bra done;
+    mul.wide.u32 %ya,%row,4;add.u64 %ya,%ya,%y;st.global.f32 [%ya],%sum;
+done:
+    ret;
+}

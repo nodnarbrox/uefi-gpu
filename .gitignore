@@ -1,0 +1,11 @@
+target/
+__pycache__/
+*.pyc
+*.img
+*.efi
+*.cubin
+core-tests*
+cache-tests*
+reference/
+driver/fw/
+driver/src/booter_load.bin

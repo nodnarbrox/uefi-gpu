@@ -1,0 +1,269 @@
+{
+  "schema": 1,
+  "description": "Historical hardware probe, not a fresh HTTP generation",
+  "model": "Qwen3.8-Flash-Next UD-Q3_K_XL",
+  "parameter_count_billions": 176.94,
+  "model_bytes": 89986353824,
+  "model_shards": 3,
+  "quantization": "mixed UD-Q3_K_XL; not uniform 3-bit or Q8",
+  "environment": "RTX 3060 passthrough to UEFI guest; Linux/KVM/VFIO host; custom driver and signed GSP firmware",
+  "checkpoint": "GOOD-frontier-axpy-1p912toks-20260908",
+  "probe_started": "2026-09-08T09:28:39-04:00",
+  "artifact_sha256": {
+    "STATUS.json": "2991ad102ca8eebc1f61667d9543ca413071fe020fc806af256d38368233cf94",
+    "uefi-gpu.efi": "a8fd3d44abb499cd0f7eaba4a09681219c984cd7e44a34887c1354945f8a9c2e",
+    "probe-frontier-eval-axpy-20260908.serial.log": "6d39b46f15f36a8216d75d10fede09c0ef2b271b8f7cd8b5bbd915f611262391",
+    "probe-frontier-eval-axpy-20260908.run": "5eb86474e050a6a78dde1452df054ca83b4bbc68abf34824e76a2e9476cb4432",
+    "probe-frontier-eval-axpy-20260908.done": "271894264e7d0716902568c875685ffc1a71ad57b7bb6ae782286e6c2c09aaab",
+    "probe-frontier-eval-axpy-20260908.efi.sha256": "655816c0e7f16649ec4487a58d9ae7655206300858bf0d41c7d0d7929e5efcea",
+    "probe-frontier-eval-axpy-20260908.started": "88fcbcce5566cb800f3bca2baba8584db00a567543a7e270549449ec34aaad22",
+    "reference/eval-cases.json": "4f95991a5a248422f73665fd23137c255460db8a58bd217cbb57a5c9d5ff4036",
+    "MODEL-SHA256SUMS": "3d4d6f8d2e5fc1573acb8271add58074833ef14c824721f241f9d1f57667750e"
+  },
+  "tokenizer_sha256": {
+    "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+    "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27"
+  },
+  "source_record_deduplication": "Identical mirrored serial records count once per case/round, not independent probes",
+  "prompts": [
+    {
+      "case": "sentence",
+      "messages": [
+        {
+          "role": "user",
+          "content": "In one short sentence, explain why the sky appears blue."
+        }
+      ],
+      "input_ids": [
+        248045,
+        846,
+        198,
+        623,
+        799,
+        2716,
+        11316,
+        11,
+        10033,
+        3069,
+        279,
+        12515,
+        7701,
+        6105,
+        13,
+        248046,
+        198,
+        248045,
+        74455,
+        198,
+        248068,
+        271,
+        248069,
+        271
+      ]
+    },
+    {
+      "case": "riddle",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I am a number. If you double me and add two, you get twelve. What number am I? Answer in one short sentence."
+        }
+      ],
+      "input_ids": [
+        248045,
+        846,
+        198,
+        40,
+        1044,
+        264,
+        1324,
+        13,
+        1368,
+        488,
+        1923,
+        728,
+        321,
+        884,
+        1330,
+        11,
+        488,
+        615,
+        28279,
+        13,
+        3437,
+        1324,
+        1044,
+        353,
+        30,
+        21134,
+        303,
+        799,
+        2716,
+        11316,
+        13,
+        248046,
+        198,
+        248045,
+        74455,
+        198,
+        248068,
+        271,
+        248069,
+        271
+      ]
+    }
+  ],
+  "records": [
+    {
+      "case": "sentence",
+      "round": 0,
+      "measured": false,
+      "prefill_tokens": 24,
+      "prefill_ns": 41965150528,
+      "decode_calls": 20,
+      "decode_ns": 55089783136,
+      "output_ids": [
+        760,
+        12515,
+        7701,
+        6105,
+        1521,
+        3594,
+        33470,
+        43000,
+        22602,
+        6105,
+        89661,
+        314,
+        37728,
+        777,
+        13057,
+        1056,
+        4860,
+        2438,
+        89661,
+        13,
+        248046
+      ],
+      "prefill_tok_s": 0.571903107650876,
+      "decode_tok_s": 0.36304372356351544,
+      "text": "The sky appears blue because air molecules scatter shorter blue wavelengths of sunlight more effectively than longer red wavelengths.",
+      "raw_line": "FRONTIER_EVAL case=sentence round=0 measured=false prefill_tokens=24 prefill_ns=41965150528 decode_calls=20 decode_ns=55089783136 output_ids=[760, 12515, 7701, 6105, 1521, 3594, 33470, 43000, 22602, 6105, 89661, 314, 37728, 777, 13057, 1056, 4860, 2438, 89661, 13, 248046] eos=true serial_during_timing=false prefill=sequential_final_head_only cache=retained",
+      "source_line_numbers": [
+        1139,
+        2785
+      ]
+    },
+    {
+      "case": "sentence",
+      "round": 1,
+      "measured": true,
+      "prefill_tokens": 24,
+      "prefill_ns": 11693000672,
+      "decode_calls": 20,
+      "decode_ns": 9264056544,
+      "output_ids": [
+        760,
+        12515,
+        7701,
+        6105,
+        1521,
+        3594,
+        33470,
+        43000,
+        22602,
+        6105,
+        89661,
+        314,
+        37728,
+        777,
+        13057,
+        1056,
+        4860,
+        2438,
+        89661,
+        13,
+        248046
+      ],
+      "prefill_tok_s": 2.0525099307887906,
+      "decode_tok_s": 2.1588814689341773,
+      "text": "The sky appears blue because air molecules scatter shorter blue wavelengths of sunlight more effectively than longer red wavelengths.",
+      "raw_line": "FRONTIER_EVAL case=sentence round=1 measured=true prefill_tokens=24 prefill_ns=11693000672 decode_calls=20 decode_ns=9264056544 output_ids=[760, 12515, 7701, 6105, 1521, 3594, 33470, 43000, 22602, 6105, 89661, 314, 37728, 777, 13057, 1056, 4860, 2438, 89661, 13, 248046] eos=true serial_during_timing=false prefill=sequential_final_head_only cache=retained",
+      "source_line_numbers": [
+        1172,
+        2818
+      ]
+    },
+    {
+      "case": "riddle",
+      "round": 0,
+      "measured": false,
+      "prefill_tokens": 40,
+      "prefill_ns": 66356135392,
+      "decode_calls": 6,
+      "decode_ns": 9728364192,
+      "output_ids": [
+        2523,
+        513,
+        279,
+        1324,
+        4097,
+        13,
+        248046
+      ],
+      "prefill_tok_s": 0.602807860399032,
+      "decode_tok_s": 0.6167532260905719,
+      "text": "You are the number five.",
+      "raw_line": "FRONTIER_EVAL case=riddle round=0 measured=false prefill_tokens=40 prefill_ns=66356135392 decode_calls=6 decode_ns=9728364192 output_ids=[2523, 513, 279, 1324, 4097, 13, 248046] eos=true serial_during_timing=false prefill=sequential_final_head_only cache=retained",
+      "source_line_numbers": [
+        1206,
+        2852
+      ]
+    },
+    {
+      "case": "riddle",
+      "round": 1,
+      "measured": true,
+      "prefill_tokens": 40,
+      "prefill_ns": 24926780960,
+      "decode_calls": 6,
+      "decode_ns": 4337297440,
+      "output_ids": [
+        2523,
+        513,
+        279,
+        1324,
+        4097,
+        13,
+        248046
+      ],
+      "prefill_tok_s": 1.6046997831042842,
+      "decode_tok_s": 1.3833499046355464,
+      "text": "You are the number five.",
+      "raw_line": "FRONTIER_EVAL case=riddle round=1 measured=true prefill_tokens=40 prefill_ns=24926780960 decode_calls=6 decode_ns=4337297440 output_ids=[2523, 513, 279, 1324, 4097, 13, 248046] eos=true serial_during_timing=false prefill=sequential_final_head_only cache=retained",
+      "source_line_numbers": [
+        1239,
+        2885
+      ]
+    }
+  ],
+  "warm_pooled": {
+    "prefill_tokens": 64,
+    "prefill_ns": 36619781632,
+    "decode_calls": 26,
+    "decode_ns": 13601353984,
+    "prefill_tok_s": 1.74768928562026,
+    "decode_tok_s": 1.911574394033505
+  },
+  "correctness": "Pinned-tokenizer host decoding plus these two regression cases; not universal numerical/model correctness",
+  "raw_checkpoint_correctness": "HOST_DETOKENIZATION_AND_REVIEW_REQUIRED",
+  "limitations": [
+    "One probe with two rounds per case; no confidence interval",
+    "Warm retained CPU/VRAM/host caches; sequential prefill",
+    "First output prediction belongs to prefill; decode includes terminal EOS",
+    "Build, model loading, teardown and HTTP TTFT excluded",
+    "No matched 177B CUDA baseline; community 24-26 tok/s is not a local result",
+    "Storage reads use UEFI BlockIO and CPU staging, not demonstrated SSD-to-GPU direct DMA",
+    "Live large-model chat remains gated by separately observed host corruption"
+  ]
+}

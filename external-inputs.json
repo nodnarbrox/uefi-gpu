@@ -1,0 +1,94 @@
+{
+  "reference/q3-metadata.gguf": {
+    "referenced_by": [
+      "driver/src/frontier_gguf.rs"
+    ],
+    "bytes": 10946624,
+    "sha256": "f2ef4328929d8b8c8930e2856eef52128dd4ce3425302f04bc3c657431cc4c49"
+  },
+  "reference/shard2-header.gguf": {
+    "referenced_by": [
+      "driver/src/frontier_gguf.rs",
+      "driver/src/frontier_gpu.rs",
+      "driver/src/frontier_gpu.rs"
+    ],
+    "bytes": 65536,
+    "sha256": "2f63ec4f6a5e5b87cacb8b1d9af0d9bf6c2982caa20f48d96054babc6a13369b"
+  },
+  "reference/shard3-header.gguf": {
+    "referenced_by": [
+      "driver/src/frontier_gguf.rs",
+      "driver/src/frontier_gpu.rs",
+      "driver/src/frontier_gpu.rs"
+    ],
+    "bytes": 1048576,
+    "sha256": "2738edca5959a74b0909a0fa336a7dec77c622ad1e0c729c8238f8bc45dcb8bf"
+  },
+  "reference/blk0-expert0-gate.bin": {
+    "referenced_by": [
+      "driver/src/frontier_gpu.rs",
+      "driver/src/frontier_gpu.rs"
+    ],
+    "bytes": 627200,
+    "sha256": "88c3d861d5510a59485306881067387b459e5dabc1d7b5a4f0ae6ca4fed88e7a"
+  },
+  "reference/blk0-expert0-up.bin": {
+    "referenced_by": [
+      "driver/src/frontier_gpu.rs",
+      "driver/src/frontier_gpu.rs"
+    ],
+    "bytes": 627200,
+    "sha256": "ee82d0a0c44c86ecd1738c764cc27e0c4a8c301b885538d01fbed964d005d36a"
+  },
+  "reference/blk0-expert0-down.bin": {
+    "referenced_by": [
+      "driver/src/frontier_gpu.rs",
+      "driver/src/frontier_gpu.rs"
+    ],
+    "bytes": 921600,
+    "sha256": "d7c5716244bcf859b0984b53dcf3eedba841abb5a5ad54e929918f83dcd75481"
+  },
+  "reference/gdn.ggml.bin": {
+    "referenced_by": [
+      "driver/src/frontier_gpu.rs"
+    ],
+    "bytes": 3170304,
+    "sha256": "fdb8d43a24764758229b9dd6cd17e70100c681460dd2da694c51b547710af065"
+  },
+  "reference/prompt.ids": {
+    "referenced_by": [
+      "driver/src/frontier_inference.rs"
+    ],
+    "bytes": 80,
+    "sha256": "2211552b0761e2593e7a4d933d1f08031306de79def168a118584e0dca6b3e50"
+  },
+  "reference/eval-sentence.ids": {
+    "referenced_by": [
+      "driver/src/frontier_inference.rs"
+    ],
+    "bytes": 96,
+    "sha256": "555d140c1556bba37e5c33dd38b240860169232a863af30fd05da4d13b92312a"
+  },
+  "reference/eval-riddle.ids": {
+    "referenced_by": [
+      "driver/src/frontier_inference.rs"
+    ],
+    "bytes": 160,
+    "sha256": "a99401e8ec33fc9676fbddb95b5d2c7976a5ac4eea34fb0b2ba57d2e8724b3de"
+  },
+  "driver/src/booter_load.bin": {
+    "referenced_by": [
+      "driver/src/main.rs",
+      "driver/src/main.rs"
+    ],
+    "bytes": 61304,
+    "sha256": "4497e3eff7e95c774b8a569d17b27c08c9650158d10b229d2be81cdcad9a085b"
+  },
+  "driver/fw/ga102-570/bootloader-570.144.bin": {
+    "referenced_by": [
+      "driver/src/main.rs"
+    ],
+    "bytes": 24684,
+    "sha256": "82428f532240727e95bb3083fbaaba9b2cc7b937314323f2d546ce7245f27fad"
+  }
+}
